@@ -29,19 +29,20 @@ RUN wget http://nginx.org/download/nginx-${NGINX_VERSION}.tar.gz && \
     make && make install
 
 # Install config and start
-RUN wget https://github.com/LeipeLeon/docker-nginx-rtmp/archive/master.tar.gz && \
-    tar -zxvf master.tar.gz && \
-    rm /usr/local/nginx/conf/nginx.conf && \
-    cp docker-nginx-rtmp-master/nginx.conf /usr/local/nginx/conf/nginx.conf && \
-    mkdir -vp /HLS/live && \
+# RUN wget https://github.com/LeipeLeon/docker-nginx-rtmp/archive/master.tar.gz && \
+#     tar -zxvf master.tar.gz && \
+#     rm /usr/local/nginx/conf/nginx.conf && \
+RUN mkdir -vp /HLS/live && \
     mkdir -vp /video_recordings && \
     chmod -R 777 /video_recordings
-    # service nginx start
 
-# forward request and error logs to docker log collector
-RUN mkdir -p /var/log/nginx/ \
-    && ln -sf /dev/stdout /var/log/nginx/access.log \
-    && ln -sf /dev/stderr /var/log/nginx/error.log
+COPY nginx.conf /usr/local/nginx/conf/nginx.conf
+COPY html /usr/local/nginx/html
+
+# # forward request and error logs to docker log collector
+# RUN mkdir -p /var/log/nginx/ \
+#     && ln -sf /dev/stdout /var/log/nginx/access.log \
+#     && ln -sf /dev/stderr /var/log/nginx/error.log
 
 EXPOSE 80 443 1935
 
