@@ -5,8 +5,15 @@ FROM ubuntu:latest
 MAINTAINER Leon Berenschot <leipeleon@gmail.com>
 
 # Update and install ubuntu packages
-RUN apt-get -y update
-RUN apt-get -y install build-essential libpcre3 libpcre3-dev libssl-dev wget ffmpeg git
+RUN apt-get -y update && apt-get -y install \
+  build-essential \
+  libpcre3 \
+  libpcre3-dev \
+  libssl-dev \
+  wget \
+  ffmpeg \
+  git \
+  && rm -rf /var/lib/apt/lists/*
 
 # RTMP module
 RUN wget https://github.com/arut/nginx-rtmp-module/archive/master.tar.gz && \
