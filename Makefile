@@ -7,7 +7,7 @@ default :
 EXITED_STATUS := `${COMMAND} ps -q -f status=exited`
 ALL_INSTANCES := `${COMMAND} ps -a -q`
 ALL_IMAGES    := `${COMMAND} images -a -q`
-ALL_DANGLING  := $($(COMMAND) images -f "dangling=true" -q)
+ALL_DANGLING  := $($(COMMAND) images -q -f "dangling=true" -q)
 
 clean :
 	$(ifneq "$(EXITED_STATUS)" "", $(COMMAND) rm $(EXITED_STATUS))
