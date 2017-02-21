@@ -1,0 +1,18 @@
+<!doctype html>
+<head>
+  <link rel="stylesheet" href="flowplayer-7.0.2/skin/skin.css">
+</head>
+
+<body>
+  <h1>RTMP/HLS Adaptive Streaming w/ NGINX</h1>
+  <p>
+    <a href='http://localhost:8080/show/nginx.m3u8'>http://localhost:8080/show/nginx.m3u8</a>
+    or try
+    <a herf="http://dailymotion.github.io/hls.js/demo/?src=http%3A%2F%2Flocalhost%3A8080%2Fshow%2Fnginx.m3u8">hls.js</a>
+  </p>
+  <div class="flowplayer" data-swf="flowplayer-7.0.2/flowplayer.swf" data-ratio="0.75">
+    <video>
+      <source src="http://localhost:8080/show/nginx.m3u8">
+    </video>
+  </div>
+</body>
