@@ -39,10 +39,10 @@ RUN mkdir -vp /HLS/live && \
 COPY nginx.conf /usr/local/nginx/conf/nginx.conf
 COPY html /usr/local/nginx/html
 
-# # forward request and error logs to docker log collector
-# RUN mkdir -p /var/log/nginx/ \
-#     && ln -sf /dev/stdout /var/log/nginx/access.log \
-#     && ln -sf /dev/stderr /var/log/nginx/error.log
+# forward request and error logs to docker log collector
+RUN mkdir -p /var/log/nginx/ \
+    && ln -sf /dev/stdout /usr/local/nginx/logs/access.log \
+    && ln -sf /dev/stderr /usr/local/nginx/logs/error.log
 
 EXPOSE 80 443 1935
 
